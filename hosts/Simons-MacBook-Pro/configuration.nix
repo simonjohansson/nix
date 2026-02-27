@@ -14,6 +14,12 @@
     pkgs.git
     pkgs.gnupg
     pkgs.jq
+    pkgs.curl
+    pkgs.gh
+    pkgs.htop
+    pkgs."silver-searcher"
+    pkgs.tmux
+    pkgs.yq
     (pkgs.writeShellScriptBin "qwe" ''
       set -euo pipefail
 
@@ -45,6 +51,11 @@
 
   homebrew = {
     enable = true;
+    onActivation.cleanup = "zap";
+    brews = [
+      "mactop"
+      "nvm"
+    ];
     casks = [
       "firefox"
       "google-chrome"

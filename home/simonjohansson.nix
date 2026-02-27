@@ -8,15 +8,25 @@
     "$HOME/bin"
   ];
 
+  home.file.".nvm/.keep".text = "";
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initContent = lib.mkOrder 500 ''
-      # Prefer system-managed Nix tools over Homebrew when both exist.
-      path=(/run/current-system/sw/bin $path)
-    '';
+    initContent = lib.mkMerge [
+      (lib.mkOrder 500 ''
+        # Prefer system-managed Nix tools over Homebrew when both exist.
+        path=(/run/current-system/sw/bin $path)
+      '')
+
+      (lib.mkOrder 550 ''
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+        [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+      '')
+    ];
 
     plugins = [
       {
