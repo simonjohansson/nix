@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   home.stateVersion = "25.11";
 
@@ -12,6 +12,11 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+
+    initContent = lib.mkOrder 500 ''
+      # Prefer system-managed Nix tools over Homebrew when both exist.
+      path=(/run/current-system/sw/bin $path)
+    '';
 
     plugins = [
       {

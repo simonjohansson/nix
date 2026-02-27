@@ -11,7 +11,8 @@
   environment.systemPackages = [
     pkgs.ghostty-bin
     pkgs.vim
-    (pkgs.writeShellScriptBin "rebuild" ''
+    pkgs.git
+    (pkgs.writeShellScriptBin "qwe" ''
       set -euo pipefail
 
       previous_dir="$(pwd)"
@@ -19,6 +20,9 @@
 
       cd /Users/simonjohansson/src/nix
       sudo -H /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/simonjohansson/src/nix#Simons-MacBook-Pro
+
+      # Start a fresh login shell so PATH/env updates are available immediately.
+      exec "$SHELL" -l
     '')
   ];
 
