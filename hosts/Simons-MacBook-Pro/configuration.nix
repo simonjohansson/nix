@@ -43,6 +43,20 @@
     VISUAL = "vim";
   };
 
+  homebrew = {
+    enable = true;
+    casks = [
+      "firefox"
+      "google-chrome"
+      "signal"
+      "slack"
+      "spotify"
+      "telegram"
+      "visual-studio-code"
+      "vlc"
+    ];
+  };
+
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 5;
 }
