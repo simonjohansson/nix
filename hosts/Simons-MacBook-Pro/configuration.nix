@@ -16,13 +16,17 @@
       set -euo pipefail
 
       previous_dir="$(pwd)"
-      trap 'cd "$previous_dir"' EXIT
-
       cd /Users/simonjohansson/src/nix
-      sudo -H /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/simonjohansson/src/nix#Simons-MacBook-Pro
 
-      # Start a fresh login shell so PATH/env updates are available immediately.
-      exec "$SHELL" -l
+      if sudo -H /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/simonjohansson/src/nix#Simons-MacBook-Pro; then
+        cd "$previous_dir"
+        # Start a fresh login shell so PATH/env updates are available immediately.
+        exec "$SHELL" -l
+      else
+        status=$?
+        cd "$previous_dir"
+        exit "$status"
+      fi
     '')
   ];
 
