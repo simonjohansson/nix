@@ -15,6 +15,7 @@
     pkgs.gnupg
     pkgs.jq
     pkgs.curl
+    pkgs.uv
     pkgs.gh
     pkgs.htop
     pkgs."silver-searcher"
