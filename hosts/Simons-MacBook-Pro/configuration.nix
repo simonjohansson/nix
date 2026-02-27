@@ -12,6 +12,7 @@
     pkgs.ghostty-bin
     pkgs.vim
     pkgs.git
+    pkgs.jq
     (pkgs.writeShellScriptBin "qwe" ''
       set -euo pipefail
 
