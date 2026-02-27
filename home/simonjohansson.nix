@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home.stateVersion = "25.11";
 
@@ -7,6 +7,26 @@
   home.sessionPath = [
     "$HOME/bin"
   ];
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    plugins = [
+      {
+        name = "history-search-multi-word";
+        src = pkgs.zsh-history-search-multi-word;
+        file = "share/zsh/zsh-history-search-multi-word/history-search-multi-word.plugin.zsh";
+      }
+    ];
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [ "git" "sudo" ];
+    };
+  };
 
   programs.ghostty = {
     enable = true;
