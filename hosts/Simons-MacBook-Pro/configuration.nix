@@ -52,11 +52,15 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
+    taps = [
+      "manaflow-ai/cmux"
+    ];
     brews = [
       "mactop"
       "nvm"
     ];
     casks = [
+      "cmux"
       "firefox"
       "google-chrome"
       "signal"
