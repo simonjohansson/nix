@@ -79,6 +79,14 @@
     };
   };
 
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry_mac;
+    enableZshIntegration = true;
+    defaultCacheTtl = 1800;
+    maxCacheTtl = 7200;
+  };
+
   programs.ghostty = {
     enable = true;
     package = null;
