@@ -21,6 +21,7 @@
     pkgs."silver-searcher"
     pkgs.tmux
     pkgs.yq
+    pkgs.opencode
     (pkgs.writeShellScriptBin "qwe" ''
       set -euo pipefail
 
