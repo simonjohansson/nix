@@ -52,7 +52,11 @@
 
   homebrew = {
     enable = true;
-    onActivation.cleanup = "zap";
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+      cleanup = "zap";
+    };
     taps = [
       "manaflow-ai/cmux"
     ];
