@@ -103,11 +103,12 @@
     settings = {
       theme = "TokyoNight";
       "font-family" = "JetBrainsMono Nerd Font";
-      "font-size" = 14;
-      "window-padding-x" = 10;
-      "window-padding-y" = 10;
+      "font-size" = 18;
+      "window-padding-x" = 20;
+      "window-padding-y" = 20;
       "confirm-close-surface" = false;
       "copy-on-select" = true;
+      "macos-option-as-alt" = true;
     };
   };
 }
