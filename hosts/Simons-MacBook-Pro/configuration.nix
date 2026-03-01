@@ -15,6 +15,7 @@
     pkgs.gnupg
     pkgs.jq
     pkgs.curl
+    pkgs.go
     pkgs.uv
     pkgs.gh
     pkgs.htop
@@ -69,6 +70,7 @@
       "cmux"
       "firefox"
       "google-chrome"
+      "opencode-desktop"
       "signal"
       "slack"
       "spotify"
