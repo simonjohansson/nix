@@ -75,7 +75,7 @@
       "slack"
       "spotify"
       "telegram"
-      "visual-studio-code"
+      "zed"
       "vlc"
     ];
   };
