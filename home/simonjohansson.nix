@@ -113,6 +113,7 @@
       "window-padding-x" = 20;
       "window-padding-y" = 20;
       "confirm-close-surface" = false;
+      "clipboard-paste-protection" = false;
       "copy-on-select" = true;
       "macos-option-as-alt" = true;
     };
