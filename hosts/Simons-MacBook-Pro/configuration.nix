@@ -16,6 +16,7 @@
     pkgs.jq
     pkgs.curl
     pkgs.go
+    pkgs.mise
     pkgs.uv
     pkgs.gh
     pkgs.htop
