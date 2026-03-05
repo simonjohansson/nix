@@ -118,4 +118,17 @@
       "macos-option-as-alt" = true;
     };
   };
+
+  programs.zed-editor = {
+    enable = true;
+    package = null;
+    extensions = [ "catppuccin" "nix" ];
+    userSettings = {
+      base_keymap = "Emacs";
+      theme = "Catppuccin Frappé";
+      terminal = {
+        option_as_meta = true;
+      };
+    };
+  };
 }
