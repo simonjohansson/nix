@@ -14,6 +14,7 @@
     pkgs.git
     pkgs.gnupg
     pkgs.jq
+    pkgs.ripgrep
     pkgs.curl
     pkgs.go
     pkgs.mise
@@ -70,7 +71,6 @@
     casks = [
       "cmux"
       "firefox"
-      "google-chrome"
       "opencode-desktop"
       "signal"
       "slack"
