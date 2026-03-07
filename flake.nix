@@ -20,6 +20,7 @@
       system = "aarch64-darwin";
       username = "simonjohansson";
       hostname = "Simons-MacBook-Pro";
+      repoRoot = "/Users/${username}/src/nix";
     in {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
         inherit system;
@@ -33,7 +34,7 @@
           }
         ];
         specialArgs = {
-          inherit inputs username;
+          inherit inputs username hostname repoRoot;
         };
       };
     };

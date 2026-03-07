@@ -1,86 +1,18 @@
-{ pkgs, username, ... }:
+{ username, hostname, repoRoot, ... }:
+let
+  userHome = "/Users/${username}";
+  darwinRebuild = "/run/current-system/sw/bin/darwin-rebuild";
+  flakeRef = "${repoRoot}#${hostname}";
+  sudoFlakeRef = builtins.replaceStrings [ "#" ] [ "\\#" ] flakeRef;
+in
 {
-  # Determinate manages the Nix installation/daemon.
-  nix.enable = false;
-
-  users.users.${username}.home = "/Users/${username}";
-  system.primaryUser = username;
-
-  programs.zsh.enable = true;
-
-  environment.systemPackages = [
-    pkgs.ghostty-bin
-    pkgs.vim
-    pkgs.git
-    pkgs.gnupg
-    pkgs.jq
-    pkgs.ripgrep
-    pkgs.curl
-    pkgs.go
-    pkgs.mise
-    pkgs.uv
-    pkgs.gh
-    pkgs.htop
-    pkgs."silver-searcher"
-    pkgs.tmux
-    pkgs.yq
-    pkgs.opencode
-    (pkgs.writeShellScriptBin "qwe" ''
-      set -euo pipefail
-
-      previous_dir="$(pwd)"
-      cd /Users/simonjohansson/src/nix
-
-      if sudo -H /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/simonjohansson/src/nix#Simons-MacBook-Pro; then
-        cd "$previous_dir"
-        # Start a fresh login shell so PATH/env updates are available immediately.
-        exec "$SHELL" -l
-      else
-        status=$?
-        cd "$previous_dir"
-        exit "$status"
-      fi
-    '')
+  imports = [
+    ./modules/system.nix
+    ./modules/packages.nix
+    ./modules/homebrew.nix
   ];
 
-  security.sudo.extraConfig = ''
-    # Escape '#' in flake refs, otherwise sudoers treats it as a comment.
-    Cmnd_Alias DARWIN_REBUILD = /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/simonjohansson/src/nix\#Simons-MacBook-Pro
-    ${username} ALL = (root) NOPASSWD: DARWIN_REBUILD
-  '';
-
-  environment.variables = {
-    EDITOR = "vim";
-    VISUAL = "vim";
+  _module.args = {
+    inherit userHome darwinRebuild flakeRef sudoFlakeRef;
   };
-
-  homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-      cleanup = "zap";
-    };
-    taps = [
-      "manaflow-ai/cmux"
-    ];
-    brews = [
-      "mactop"
-      "nvm"
-    ];
-    casks = [
-      "cmux"
-      "firefox"
-      "opencode-desktop"
-      "signal"
-      "slack"
-      "spotify"
-      "telegram"
-      "zed"
-      "vlc"
-    ];
-  };
-
-  nixpkgs.hostPlatform = "aarch64-darwin";
-  system.stateVersion = 5;
 }
