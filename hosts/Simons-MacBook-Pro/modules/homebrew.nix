@@ -17,6 +17,8 @@
     casks = [
       "cmux"
       "firefox"
+      "lm-studio"
+      "obsidian"
       "opencode-desktop"
       "signal"
       "slack"
