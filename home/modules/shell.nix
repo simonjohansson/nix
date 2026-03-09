@@ -4,6 +4,7 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    setOptions = [ "NO_BEEP" ];
 
     initContent = lib.mkMerge [
       (lib.mkOrder 500 ''
@@ -31,6 +32,11 @@
       theme = "robbyrussell";
       plugins = [ "git" "sudo" ];
     };
+  };
+
+  programs.readline = {
+    enable = true;
+    variables.bell-style = "none";
   };
 
   programs.direnv = {
