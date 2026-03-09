@@ -11,7 +11,6 @@
       "manaflow-ai/cmux"
     ];
     brews = [
-      "mactop"
       "nvm"
     ];
     casks = [

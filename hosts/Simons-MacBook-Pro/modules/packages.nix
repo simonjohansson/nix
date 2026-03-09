@@ -13,6 +13,9 @@
     pkgs.uv
     pkgs.gh
     pkgs.htop
+    (pkgs.mactop.overrideAttrs (_: {
+      doCheck = false;
+    }))
     pkgs."silver-searcher"
     pkgs.tmux
     pkgs.yq
