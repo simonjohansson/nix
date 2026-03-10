@@ -1,5 +1,13 @@
 { pkgs, ... }:
 {
+  home.file."bin/zed" = {
+    executable = true;
+    text = ''
+      #!/bin/sh
+      exec /Applications/Zed.app/Contents/MacOS/cli "$@"
+    '';
+  };
+
   services.gpg-agent = {
     enable = true;
     pinentry.package = pkgs.pinentry_mac;
