@@ -39,6 +39,11 @@
     variables.bell-style = "none";
   };
 
+  programs.mise = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
