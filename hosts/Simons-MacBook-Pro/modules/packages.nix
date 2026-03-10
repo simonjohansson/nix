@@ -8,6 +8,7 @@
     pkgs.jq
     pkgs.ripgrep
     pkgs.curl
+    pkgs.duti
     pkgs.go
     pkgs.mise
     pkgs.uv
