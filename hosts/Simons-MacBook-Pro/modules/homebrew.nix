@@ -20,6 +20,7 @@
       "lm-studio"
       "obsidian"
       "opencode-desktop"
+      "tailscale-app"
       "signal"
       "slack"
       "spotify"
