@@ -1,7 +1,6 @@
 { lib, pkgs, darwinRebuild, flakeRef, repoRoot, ... }:
 {
   environment.systemPackages = [
-    pkgs.ghostty-bin
     pkgs.vim
     pkgs.git
     pkgs.gnupg
