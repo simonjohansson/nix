@@ -5,6 +5,7 @@
     ./modules/ssh.nix
     ./modules/git.nix
     ./modules/desktop.nix
+    ./modules/opencode.nix
   ];
 
   home.stateVersion = "25.11";
