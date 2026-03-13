@@ -59,6 +59,14 @@ in
     '';
   };
 
+  home.file."bin/cmux" = {
+    executable = true;
+    text = ''
+      #!/bin/sh
+      exec /Applications/cmux.app/Contents/Resources/bin/cmux "$@"
+    '';
+  };
+
   home.file.".duti".text = lib.concatMapStringsSep "\n" mkDutiLine dutiAssociations + "\n";
 
   home.activation.applyDutiAssociations = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
