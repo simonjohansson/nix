@@ -25,6 +25,20 @@ let
     - When using cmux, start by identifying context with `cmux identify --json` or another context-discovery command before creating or moving panes or surfaces.
   '';
 in {
+  home.file."bin/claude" = {
+    executable = true;
+    text = ''
+      #!/bin/sh
+      exec nix run github:sadjow/claude-code-nix -- "$@"
+    '';
+  };
+
+  programs.claude-code = {
+    enable = true;
+    package = null;
+    memory.text = agentRules;
+  };
+
   programs.codex = {
     enable = true;
     package = pkgs.codex;

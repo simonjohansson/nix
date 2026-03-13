@@ -5,6 +5,7 @@
     pkgs.gnupg
     pkgs.jq
     pkgs.ripgrep
+    pkgs.fd
     pkgs.curl
     pkgs.duti
     pkgs.go

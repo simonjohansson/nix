@@ -10,7 +10,9 @@
 - Broad validation: `nix flake check`.
 - Safe full build: `darwin-rebuild build --flake .#Simons-MacBook-Pro`.
 - Direct build: `nix build .#darwinConfigurations.Simons-MacBook-Pro.system`.
-- Apply locally: `qwe`; it performs a real `switch`.
+- Apply locally: `qwe >qwe.log 2>&1 || cat qwe.log`; it performs a real `switch`. **Always redirect output — never run bare `qwe`.**
+
+When running `darwin-rebuild` or `nix` commands, redirect output to a file (`cmd >cmd.log 2>&1 || cat cmd.log`); only read the log if you actually need the output (e.g. `nix eval`).
 
 ## Configuration
 - Before placing config files manually, first check whether Home Manager or the package exposes a declarative option and prefer that over ad hoc file placement.
