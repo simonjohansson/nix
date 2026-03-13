@@ -1,8 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.git = {
     enable = true;
-    package = null;
+    package = pkgs.git;
     lfs.enable = true;
     settings = {
       alias = {

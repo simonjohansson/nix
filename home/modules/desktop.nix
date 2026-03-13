@@ -77,7 +77,7 @@ in
 
   programs.ghostty = {
     enable = true;
-    package = null;
+    package = pkgs.ghostty-bin;
     settings = {
       theme = "TokyoNight";
       "font-family" = "JetBrainsMono Nerd Font";

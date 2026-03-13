@@ -2,7 +2,6 @@
 {
   environment.systemPackages = [
     pkgs.vim
-    pkgs.git
     pkgs.gnupg
     pkgs.jq
     pkgs.ripgrep
@@ -18,7 +17,6 @@
     pkgs."silver-searcher"
     pkgs.tmux
     pkgs.yq
-    pkgs.opencode
     (pkgs.writeShellScriptBin "qwe" ''
       set -euo pipefail
 

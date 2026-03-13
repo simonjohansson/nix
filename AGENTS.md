@@ -21,7 +21,7 @@
 - `home/modules/shell.nix`: shell, `mise`, and `direnv` setup.
 - `home/modules/git.nix`: Git identity and defaults.
 - `home/modules/desktop.nix`: desktop apps, editor settings, file associations, GPG agent.
-- `home/modules/opencode.nix`: agent rules mirrored into the local `opencode` config.
+- `home/modules/llms.nix`: shared Codex and OpenCode configuration and agent rules.
 
 ## Core Commands
 
@@ -108,7 +108,9 @@
 - Keep GUI/macOS app installs in the existing Homebrew module unless there is a clear reason to move them.
 - Follow the current split: `environment.systemPackages` for CLI tools, `homebrew.casks` for GUI apps, `homebrew.brews` for Homebrew CLI exceptions.
 - Do not enable `nix.enable`; this repo intentionally leaves Nix installation management to Determinate.
-- Keep `programs.<name>.package = null` when the repo intentionally relies on an externally installed app.
+- Keep installation and configuration together in the relevant Home Manager module when the program is Nix-managed.
+- Use `programs.<name>.package = null` only when the repo intentionally relies on a Homebrew or other externally installed app.
+- Before adding standalone config files, first check whether Home Manager or the target package already exposes a declarative option, and prefer that over ad hoc file placement.
 
 ## Shell and Script Guidelines
 
