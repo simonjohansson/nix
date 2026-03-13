@@ -25,6 +25,7 @@
       "slack"
       "spotify"
       "telegram"
+      "whatsapp"
       "zed"
       "vlc"
     ];
