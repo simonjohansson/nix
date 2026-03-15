@@ -1,12 +1,17 @@
 { lib, pkgs, darwinRebuild, flakeRef, repoRoot, ... }:
+let
+  defuddle = pkgs.callPackage ../../../pkgs/defuddle.nix { };
+in
 {
   environment.systemPackages = [
     pkgs.vim
     pkgs.gnupg
+    defuddle
     pkgs.jq
     pkgs.ripgrep
     pkgs.fd
     pkgs.curl
+    pkgs.pandoc
     pkgs.duti
     pkgs.go
     pkgs.uv
