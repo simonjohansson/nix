@@ -23,6 +23,7 @@
       "signal"
       "slack"
       "spotify"
+      "discord"
       "telegram"
       "whatsapp"
       "zed"
