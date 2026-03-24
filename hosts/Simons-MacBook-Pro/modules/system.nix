@@ -1,4 +1,4 @@
-{ username, userHome, darwinRebuild, sudoFlakeRef, ... }:
+{ lib, username, userHome, darwinRebuild, sudoFlakeRef, ... }:
 {
   # Determinate manages the Nix installation/daemon.
   nix.enable = false;
@@ -35,5 +35,17 @@
   system.keyboard.remapCapsLockToControl = true;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.overlays = [
+    (final: prev: {
+      direnv = prev.direnv.overrideAttrs (old: {
+        # direnv's Darwin makefile forces external linking; keep cgo enabled so
+        # upstream packaging changes do not break local rebuilds.
+        env = (old.env or { }) // lib.optionalAttrs final.stdenv.hostPlatform.isDarwin {
+          CGO_ENABLED = 1;
+        };
+      });
+    })
+  ];
+
   system.stateVersion = 5;
 }
