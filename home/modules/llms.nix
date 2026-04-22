@@ -32,7 +32,7 @@ in {
 
   programs.codex = {
     enable = true;
-    package = pkgs.codex;
+    package = null;
     context = agentRules;
   };
 

@@ -14,6 +14,7 @@
 
   home.sessionPath = [
     "$HOME/bin"
+    "/opt/homebrew/bin"
   ];
 
   home.file.".nvm/.keep".text = "";

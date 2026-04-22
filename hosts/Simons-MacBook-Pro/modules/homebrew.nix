@@ -15,6 +15,7 @@
     ];
     casks = [
       "cmux"
+      "codex"
       "firefox"
       "lm-studio"
       "obsidian"
