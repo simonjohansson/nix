@@ -14,15 +14,6 @@ let
 
     ## Languages
     - Always manage language runtimes with `mise`
-
-    ## cmux Skills
-    - If `CMUX_WORKSPACE_ID` is set and non-empty, assume the session is inside a cmux workspace and use cmux skills automatically when they fit the task.
-    - Use the `cmux` skill for topology-aware terminal work such as discovering the current workspace, creating panes, moving surfaces, focusing panes, or routing commands to a specific surface.
-    - Use the `cmux-browser` skill for browser automation inside cmux webviews, including opening pages, waiting for state changes, taking interactive snapshots, and acting on element refs.
-    - Use the `cmux-markdown` skill when a plan, notes, or documentation would benefit from a live markdown panel beside the terminal.
-    - When `CMUX_WORKSPACE_ID` is unset or empty, do not assume cmux is available and do not require cmux for routine work.
-    - Prefer ordinary shell commands when they are simpler than cmux, even when `CMUX_WORKSPACE_ID` is available.
-    - When using cmux, start by identifying context with `cmux identify --json` or another context-discovery command before creating or moving panes or surfaces.
   '';
 in {
   home.file."bin/claude" = {
@@ -36,18 +27,18 @@ in {
   programs.claude-code = {
     enable = true;
     package = null;
-    memory.text = agentRules;
+    context = agentRules;
   };
 
   programs.codex = {
     enable = true;
     package = pkgs.codex;
-    custom-instructions = agentRules;
+    context = agentRules;
   };
 
   programs.opencode = {
     enable = true;
     package = pkgs.opencode;
-    rules = agentRules;
+    context = agentRules;
   };
 }

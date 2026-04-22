@@ -19,6 +19,7 @@
       "lm-studio"
       "obsidian"
       "opencode-desktop"
+      "superset"
       "tailscale-app"
       "signal"
       "slack"
