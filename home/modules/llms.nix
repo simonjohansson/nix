@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 let
   agentRules = ''
     ## Git
@@ -24,6 +24,8 @@ in {
     '';
   };
 
+  home.file.".config/opencode/AGENTS.md".text = agentRules;
+
   programs.claude-code = {
     enable = true;
     package = null;
@@ -33,12 +35,6 @@ in {
   programs.codex = {
     enable = true;
     package = null;
-    context = agentRules;
-  };
-
-  programs.opencode = {
-    enable = true;
-    package = pkgs.opencode;
     context = agentRules;
   };
 }

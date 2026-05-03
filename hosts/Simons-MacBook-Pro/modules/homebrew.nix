@@ -12,6 +12,7 @@
     ];
     brews = [
       "nvm"
+      "opencode"
     ];
     casks = [
       "cmux"
