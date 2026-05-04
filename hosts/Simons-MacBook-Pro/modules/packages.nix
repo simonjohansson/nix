@@ -17,6 +17,7 @@ in
     pkgs.uv
     pkgs.gh
     pkgs.htop
+    pkgs.duckdb
     (pkgs.mactop.overrideAttrs (_: {
       doCheck = false;
     }))
