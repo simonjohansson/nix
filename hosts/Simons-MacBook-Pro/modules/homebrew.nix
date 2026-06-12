@@ -7,21 +7,17 @@
       upgrade = true;
       cleanup = "zap";
     };
-    taps = [
-      "manaflow-ai/cmux"
-    ];
+    taps = [ ];
     brews = [
       "nvm"
       "opencode"
     ];
     casks = [
-      "cmux"
       "codex"
       "firefox"
       "lm-studio"
       "obsidian"
       "opencode-desktop"
-      "superset"
       "tailscale-app"
       "signal"
       "slack"

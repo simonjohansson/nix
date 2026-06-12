@@ -21,7 +21,6 @@ in
     (pkgs.mactop.overrideAttrs (_: {
       doCheck = false;
     }))
-    pkgs."silver-searcher"
     pkgs.tmux
     pkgs.yq
     (pkgs.writeShellScriptBin "qwe" ''

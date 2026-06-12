@@ -28,6 +28,7 @@
           ./hosts/${hostname}/configuration.nix
           home-manager.darwinModules.home-manager
           {
+            home-manager.backupFileExtension = "hm-backup";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${username} = import ./home/${username}.nix;
