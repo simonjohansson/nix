@@ -14,6 +14,14 @@ let
 
     ## Languages
     - Always manage language runtimes with `mise`
+
+    ## Working Preferences
+    - When asked to follow an existing pattern, inspect that pattern first and mirror its boundaries closely.
+    - Keep changes strictly scoped to the explicit request; do not expand into adjacent systems, public contracts, generated artifacts, or secondary workflows without confirmation.
+    - If instructions are ambiguous or appear to conflict, stop and ask before implementing.
+    - Treat established public/stable boundaries as off-limits unless explicitly asked to change them.
+    - When corrected, pause, reassess, and reduce the diff instead of immediately trying a new design.
+    - Before changing generated files, schemas, APIs, persisted formats, or other broad-impact artifacts, explain why it is necessary and wait for confirmation.
   '';
 in {
   home.file."bin/claude" = {
