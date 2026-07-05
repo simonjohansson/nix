@@ -8,6 +8,10 @@
 
   programs.zsh.enable = true;
 
+  documentation.enable = false;
+  # The packaged uninstaller evaluates its own default system, which pulls in darwin-manual-html.
+  system.tools.darwin-uninstaller.enable = false;
+
   security.sudo.extraConfig = ''
     # Escape '#' in flake refs, otherwise sudoers treats it as a comment.
     Cmnd_Alias DARWIN_REBUILD = ${darwinRebuild} switch --flake ${sudoFlakeRef}
