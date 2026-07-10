@@ -1,23 +1,29 @@
 { lib, pkgs, ... }:
+let
+  direnv = pkgs.direnv.overrideAttrs (old: {
+    # direnv's Darwin makefile forces external linking; keep cgo enabled so
+    # upstream packaging changes do not break local rebuilds.
+    env = (old.env or { }) // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
+      CGO_ENABLED = 1;
+    };
+  });
+in
 {
+  home.sessionVariables = {
+    EDITOR = "vim";
+    VISUAL = "vim";
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     setOptions = [ "NO_BEEP" ];
 
-    initContent = lib.mkMerge [
-      (lib.mkOrder 500 ''
-        # Prefer system-managed Nix tools over Homebrew when both exist.
-        path=(/run/current-system/sw/bin $path)
-      '')
-
-      (lib.mkOrder 550 ''
-        export NVM_DIR="$HOME/.nvm"
-        [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
-        [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-      '')
-    ];
+    initContent = lib.mkOrder 500 ''
+      # Prefer system-managed Nix tools over Homebrew when both exist.
+      path=(/run/current-system/sw/bin $path)
+    '';
 
     plugins = [
       {
@@ -42,10 +48,12 @@
   programs.mise = {
     enable = true;
     enableZshIntegration = true;
+    globalConfig.tools.go = "latest";
   };
 
   programs.direnv = {
     enable = true;
+    package = direnv;
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };

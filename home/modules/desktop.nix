@@ -51,6 +51,8 @@ let
     lib.concatStringsSep "\t" (lib.filter (value: value != null) [ bundleId target role ]);
 in
 {
+  home.packages = [ pkgs.duti ];
+
   home.file."bin/zed" = {
     executable = true;
     text = ''
@@ -66,14 +68,6 @@ in
       run --silence ${lib.getExe pkgs.duti} "$HOME/.duti"
     fi
   '';
-
-  services.gpg-agent = {
-    enable = true;
-    pinentry.package = pkgs.pinentry_mac;
-    enableZshIntegration = true;
-    defaultCacheTtl = 1800;
-    maxCacheTtl = 7200;
-  };
 
   programs.ghostty = {
     enable = true;

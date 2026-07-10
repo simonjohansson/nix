@@ -15,15 +15,13 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, ... }:
+  outputs = { nixpkgs, nix-darwin, home-manager, ... }:
     let
       system = "aarch64-darwin";
       username = "simonjohansson";
       hostname = "Simons-MacBook-Pro";
       repoRoot = "/Users/${username}/src/nix";
-    in {
-      darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        inherit system;
+      darwinConfiguration = nix-darwin.lib.darwinSystem {
         modules = [
           ./hosts/${hostname}/configuration.nix
           home-manager.darwinModules.home-manager
@@ -35,8 +33,12 @@
           }
         ];
         specialArgs = {
-          inherit inputs username hostname repoRoot;
+          inherit username hostname repoRoot system;
         };
       };
+    in {
+      darwinConfigurations.${hostname} = darwinConfiguration;
+      checks.${system}.darwin = darwinConfiguration.system;
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
     };
 }

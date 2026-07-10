@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   agentRules = ''
     ## Git
@@ -24,19 +24,11 @@ let
     - Before changing generated files, schemas, APIs, persisted formats, or other broad-impact artifacts, explain why it is necessary and wait for confirmation.
   '';
 in {
-  home.file."bin/claude" = {
-    executable = true;
-    text = ''
-      #!/bin/sh
-      exec nix run github:sadjow/claude-code-nix -- "$@"
-    '';
-  };
-
   home.file.".config/opencode/AGENTS.md".text = agentRules;
 
   programs.claude-code = {
     enable = true;
-    package = null;
+    package = pkgs.claude-code;
     context = agentRules;
   };
 

@@ -1,5 +1,10 @@
 { pkgs, ... }:
 {
+  programs.gpg = {
+    enable = true;
+    package = pkgs.gnupg;
+  };
+
   programs.git = {
     enable = true;
     package = pkgs.git;
@@ -32,5 +37,13 @@
         textconv = "echo .dump | sqlite3";
       };
     };
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry_mac;
+    enableZshIntegration = true;
+    defaultCacheTtl = 1800;
+    maxCacheTtl = 7200;
   };
 }

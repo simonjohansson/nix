@@ -9,7 +9,7 @@ From this repo:
 ```bash
 cd /Users/simonjohansson/src/nix
 nix flake update
-qwe
+qwe >qwe.log 2>&1 || cat qwe.log
 ```
 
 What this does:
@@ -23,11 +23,20 @@ Update only `nixpkgs`:
 
 ```bash
 nix flake lock --update-input nixpkgs
-qwe
+qwe >qwe.log 2>&1 || cat qwe.log
 ```
 
 Review lockfile changes before switching:
 
 ```bash
 git diff flake.lock
+```
+
+## Update Homebrew packages
+
+Homebrew upgrades are deliberately separate from nix-darwin activation:
+
+```bash
+brew update
+brew upgrade
 ```

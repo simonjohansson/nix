@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./modules/packages.nix
     ./modules/shell.nix
     ./modules/ssh.nix
     ./modules/git.nix
@@ -16,6 +17,4 @@
     "$HOME/bin"
     "/opt/homebrew/bin"
   ];
-
-  home.file.".nvm/.keep".text = "";
 }

@@ -3,30 +3,29 @@
   homebrew = {
     enable = true;
     onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-      cleanup = "zap";
+      autoUpdate = false;
+      upgrade = false;
+      cleanup = "uninstall";
     };
     taps = [ ];
     brews = [
-      "nvm"
       "opencode"
     ];
     casks = [
       "codex"
+      "discord"
       "firefox"
       "lm-studio"
       "obsidian"
       "opencode-desktop"
-      "tailscale-app"
       "signal"
       "slack"
       "spotify"
-      "discord"
+      "tailscale-app"
       "telegram"
+      "vlc"
       "whatsapp"
       "zed"
-      "vlc"
     ];
   };
 }
