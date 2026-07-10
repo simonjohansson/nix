@@ -23,9 +23,9 @@
       "spotify"
       "tailscale-app"
       "telegram"
+      "visual-studio-code"
       "vlc"
       "whatsapp"
-      "zed"
     ];
   };
 }

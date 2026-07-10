@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 let
-  zedBundleId = "dev.zed.Zed";
-  zedExtensions = [
+  vscodeBundleId = "com.microsoft.VSCode";
+  editorExtensions = [
     ".nix"
     ".md"
     ".txt"
@@ -37,10 +37,10 @@ let
     ".tfvars"
   ];
   dutiAssociations = map (target: {
-    bundleId = zedBundleId;
+    bundleId = vscodeBundleId;
     inherit target;
     role = "all";
-  }) zedExtensions;
+  }) editorExtensions;
 
   mkDutiLine =
     {
@@ -53,11 +53,11 @@ in
 {
   home.packages = [ pkgs.duti ];
 
-  home.file."bin/zed" = {
+  home.file."bin/code" = {
     executable = true;
     text = ''
       #!/bin/sh
-      exec /Applications/Zed.app/Contents/MacOS/cli "$@"
+      exec "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" "$@"
     '';
   };
 
@@ -85,15 +85,17 @@ in
     };
   };
 
-  programs.zed-editor = {
+  programs.vscode = {
     enable = true;
     package = null;
-    extensions = [ "catppuccin" "nix" ];
-    userSettings = {
-      base_keymap = "Emacs";
-      theme = "Catppuccin Frappé";
-      terminal = {
-        option_as_meta = true;
+    profiles.default = {
+      extensions = [
+        pkgs.vscode-extensions.catppuccin.catppuccin-vsc
+        pkgs.vscode-extensions.jnoortheen.nix-ide
+      ];
+      userSettings = {
+        "terminal.integrated.macOptionIsMeta" = true;
+        "workbench.colorTheme" = "Catppuccin Frappé";
       };
     };
   };
