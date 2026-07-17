@@ -1,5 +1,6 @@
 { lib, pkgs, ... }:
 let
+  safariBundleId = "com.apple.Safari";
   vscodeBundleId = "com.microsoft.VSCode";
   editorExtensions = [
     ".nix"
@@ -27,7 +28,6 @@ let
     ".tsx"
     ".css"
     ".scss"
-    ".html"
     ".xml"
     ".sql"
     ".go"
@@ -36,11 +36,21 @@ let
     ".tf"
     ".tfvars"
   ];
-  dutiAssociations = map (target: {
-    bundleId = vscodeBundleId;
-    inherit target;
-    role = "all";
-  }) editorExtensions;
+  dutiAssociations =
+    map (target: {
+      bundleId = vscodeBundleId;
+      inherit target;
+      role = "all";
+    }) editorExtensions
+    ++ map (target: {
+      bundleId = safariBundleId;
+      inherit target;
+      role = "all";
+    }) [
+      "http"
+      "https"
+      "public.html"
+    ];
 
   mkDutiLine =
     {

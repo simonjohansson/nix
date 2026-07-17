@@ -20,6 +20,7 @@
       "opencode-desktop"
       "signal"
       "slack"
+      "soulseek"
       "spotify"
       "tailscale-app"
       "telegram"
