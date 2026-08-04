@@ -18,5 +18,6 @@ in
     pkgs.mactop
     pkgs.tmux
     pkgs.yq
+    pkgs.k9s
   ];
 }

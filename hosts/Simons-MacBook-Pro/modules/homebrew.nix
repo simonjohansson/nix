@@ -9,6 +9,7 @@
     };
     taps = [ ];
     brews = [
+      "kotlin"
       "opencode"
     ];
     casks = [
@@ -18,6 +19,7 @@
       "lm-studio"
       "obsidian"
       "opencode-desktop"
+      "orbstack"
       "signal"
       "slack"
       "soulseek"
