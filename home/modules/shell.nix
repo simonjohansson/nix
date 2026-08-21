@@ -36,7 +36,7 @@ in
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [ "git" "sudo" ];
+      plugins = [ "direnv" "git" "sudo" ];
     };
   };
 
