@@ -48,7 +48,10 @@ in
   programs.mise = {
     enable = true;
     enableZshIntegration = true;
-    globalConfig.tools.go = "latest";
+    globalConfig.tools = {
+      go = "latest";
+      node = "lts";
+    };
   };
 
   programs.direnv = {
