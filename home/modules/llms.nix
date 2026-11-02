@@ -28,7 +28,10 @@ in {
 
   programs.claude-code = {
     enable = true;
-    package = pkgs.claude-code;
+    package = pkgs.writeShellScriptBin "claude" ''
+      export NODE_EXTRA_CA_CERTS="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+      exec ${pkgs.claude-code}/bin/claude "$@"
+    '';
     context = agentRules;
   };
 
