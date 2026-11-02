@@ -15,6 +15,7 @@ let
     - Always manage language runtimes with `mise`
 
     ## Working Preferences
+    - Always use the ponytail skill for coding tasks, including reviews.
     - When asked to follow an existing pattern, inspect that pattern first and mirror its boundaries closely.
     - Keep changes strictly scoped to the explicit request; do not expand into adjacent systems, public contracts, generated artifacts, or secondary workflows without confirmation.
     - If instructions are ambiguous or appear to conflict, stop and ask before implementing.
