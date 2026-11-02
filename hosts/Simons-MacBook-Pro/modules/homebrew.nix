@@ -10,6 +10,8 @@
     taps = [ ];
     brews = [
       "kotlin"
+      "m68k-elf-binutils"
+      "m68k-elf-gcc"
       "opencode"
     ];
     casks = [

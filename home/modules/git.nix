@@ -12,7 +12,7 @@
     settings = {
       alias = {
         lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
-        lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+        lola = "log --graph --decorate --pretty=oneline --abbrev-commit --exclude=refs/t3/* --all";
       };
       color = {
         branch = "auto";
