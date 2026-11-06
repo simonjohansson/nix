@@ -23,12 +23,14 @@
       "rtmidi"
       "rubberband"
       "zlib"
+      "btop"
     ];
     casks = [
       "codex"
       "discord"
       "firefox"
       "lm-studio"
+      "mactex"
       "obsidian"
       "opencode-desktop"
       "orbstack"
