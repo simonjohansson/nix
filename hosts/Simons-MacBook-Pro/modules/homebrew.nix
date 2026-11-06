@@ -24,6 +24,7 @@
       "rubberband"
       "zlib"
       "btop"
+      "pstree"
     ];
     casks = [
       "codex"
