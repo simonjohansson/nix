@@ -106,6 +106,16 @@ in
       userSettings = {
         "terminal.integrated.macOptionIsMeta" = true;
         "workbench.colorTheme" = "Catppuccin Frappé";
+        # MacTeX by absolute path: VS Code started from an old shell may not have /Library/TeX/texbin on PATH
+        "latex-workshop.kpsewhich.path" = "/Library/TeX/texbin/kpsewhich";
+        "latex-workshop.latex.tools" = [
+          {
+            name = "latexmk";
+            command = "/Library/TeX/texbin/latexmk";
+            args = [ "-synctex=1" "-interaction=nonstopmode" "-file-line-error" "-pdf" "-outdir=%OUTDIR%" "%DOC%" ];
+            env = { PATH = "/Library/TeX/texbin:/usr/bin:/bin"; };
+          }
+        ];
       };
     };
   };

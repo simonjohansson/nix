@@ -16,5 +16,7 @@
   home.sessionPath = [
     "$HOME/bin"
     "/opt/homebrew/bin"
+    # MacTeX; its /etc/paths.d entry is only read by path_helper, which this shell skips
+    "/Library/TeX/texbin"
   ];
 }
