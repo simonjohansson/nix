@@ -91,6 +91,7 @@ in
       "confirm-close-surface" = false;
       "clipboard-paste-protection" = false;
       "copy-on-select" = true;
+      "middle-click-action" = "clipboard-paste";
       "macos-option-as-alt" = true;
     };
   };
